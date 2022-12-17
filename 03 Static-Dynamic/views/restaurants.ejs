@@ -11,9 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/shared.css" />
+    <link rel="stylesheet" href="styles/restaurants.css" />
     <script src="scripts/responsive.js" defer></script>
   </head>
   <body>
+    <!-- The header code is repeated multiple times. So it is replaced  with the include statement below
     <header id="main-header">
       <div id="logo"><a href="/index">Eatwell</a></div>
       <nav>
@@ -33,6 +35,9 @@
         <span></span>
       </button>
     </header>
+    -->
+    <%- include("includes/header") %>
+    <!-- Similarly, the aside code is repeated multiple times. So it is replaced  with the include statement below
     <aside id="mobile-drawer">
       <nav>
         <ul>
@@ -46,16 +51,37 @@
         </ul>
       </nav>
     </aside>
+    -->
+    <%- include("includes/aside") %>
     <main>
-      <h1>Make the world a tastier place!</h1>
-      <p>
-        Eatwell is a website for food enthusiasts that allows you to share and
-        discover amazing restaurants from all over the world!
-      </p>
-      <p>
-        You don't need to sign up or create any account - you can simply start
-        sharing right away!
-      </p>
+      <h1>Recommended restaurants</h1>
+      <% if ( numberOfRestaurants == 0) { %>
+      <p>Please help other to find restaurants</p>
+      <% } else { %>
+      <p>Find your next favorite restaurants with help of our other users!</p>
+      <p>We found <%= numberOfRestaurants %> restaurants.</p>
+      <ul id="restaurants-list">
+        <% for (const restaurant of restaurants) { %>
+        <!-- We can also comment out code and pass the value as the parameters
+          
+          <li class="restaurant-item">
+          <article>
+            <h2><%= restaurant.name %></h2>
+            <div class="restaurant-meta">
+              <p><%= restaurant.cuisine %></p>
+              <p><%= restaurant.address %></p>
+            </div>
+            <p><%= restaurant.description %></p>
+            <div class="restaurant-actions">
+              <a href="<%= restaurant.website %>">View Restaurant</a>
+            </div>
+          </article>
+        </li> -->
+        <%- include("includes/restaurants/list-item", {restaurant : restaurant})
+        <!-- For some weird reason restaurant : rest is not working -->
+        %> <% } %>
+      </ul>
+      <% } %>
     </main>
   </body>
 </html>

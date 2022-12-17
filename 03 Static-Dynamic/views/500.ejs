@@ -10,11 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles/shared.css" />
-    <link rel="stylesheet" href="styles/index.css" />
-    <script src="scripts/responsive.js" defer></script>
+    <link rel="stylesheet" href="/styles/shared.css" />
+    <script src="/scripts/responsive.js" defer></script>
   </head>
   <body>
+    <!-- The header code is repeated multiple times. So it is replaced  with the include statement below
     <header id="main-header">
       <div id="logo"><a href="/index">Eatwell</a></div>
       <nav>
@@ -34,7 +34,9 @@
         <span></span>
       </button>
     </header>
-    <aside id="mobile-drawer">
+    -->
+    <%- include("includes/header") %>
+    <!-- <aside id="mobile-drawer">
       <nav>
         <ul>
           <li class="nav-item">
@@ -46,20 +48,14 @@
           <li class="nav-item"><a href="/about">About Eatwell</a></li>
         </ul>
       </nav>
-    </aside>
+    </aside> -->
+    <%- include("includes/aside") %>
     <main>
-      <h1>Make the world a tastier place!</h1>
+      <h1>Something went wrong behind the scenes!</h1>
       <p>
-        Share your favorite restaurants or find recommendations of other users!
+        Unexpected server error. We are doing everything we could to fix this
+        for you.
       </p>
-      <ul id="actions">
-        <li>
-          <a href="restaurants.html">Browse Shared Restaurants</a>
-        </li>
-        <li>
-          <a href="recommend.html">Share Your Favorite Restaurant</a>
-        </li>
-      </ul>
     </main>
   </body>
 </html>

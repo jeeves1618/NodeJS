@@ -11,10 +11,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/shared.css" />
-    <link rel="stylesheet" href="styles/restaurants.css" />
+    <link rel="stylesheet" href="styles/index.css" />
     <script src="scripts/responsive.js" defer></script>
   </head>
   <body>
+    <!-- The header code is repeated multiple times. So it is replaced  with the include statement below
     <header id="main-header">
       <div id="logo"><a href="/index">Eatwell</a></div>
       <nav>
@@ -34,6 +35,8 @@
         <span></span>
       </button>
     </header>
+    -->
+    <%- include("includes/header") %>
     <aside id="mobile-drawer">
       <nav>
         <ul>
@@ -48,23 +51,16 @@
       </nav>
     </aside>
     <main>
-      <h1>Recommended restaurants</h1>
-      <p>Find your next favorite restaurants with help of our other users!</p>
-      <ul id="restaurants-list">
-        <li class="restaurant-item">
-          <article>
-            <h2>Restaurant Title</h2>
-            <div class="restaurant-meta">
-              <p>Mexican</p>
-              <p>Address of the restaurant, including city</p>
-            </div>
-            <p>
-              A short description, explaining why this restaurant is awesome!
-            </p>
-            <div class="restaurant-actions">
-              <a href="">View Website</a>
-            </div>
-          </article>
+      <h1>Make the world a tastier place!</h1>
+      <p>
+        Share your favorite restaurants or find recommendations of other users!
+      </p>
+      <ul id="actions">
+        <li>
+          <a href="/restaurants">Browse Shared Restaurants</a>
+        </li>
+        <li>
+          <a href="/recommend">Share Your Favorite Restaurant</a>
         </li>
       </ul>
     </main>
