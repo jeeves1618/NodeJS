@@ -18,6 +18,16 @@ const fileSystem = require("fs");
 const path = require("path");
 const express = require("express");
 
+/*
+      LOOK CAREFULLY. In this line express function is invoked as a function, const app = express(); 
+
+      But In this line express.urlencoded({ extended: false }), express is used as an object and its urlencoded property is accessed.
+
+      You can see the object format of any function through console.dir in chrome. It will show the default properties.
+
+      In case of express, the developers have added an additional property to express, which we don't do in application development normally. 
+      
+*/
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));

@@ -36,3 +36,4 @@ console.log(vwTaigun);
 
 vwTaigun = { kerbWeight: 1260, ...vwTaigun };
 console.log(vwTaigun);
+console.log({ ...vwTaigun });

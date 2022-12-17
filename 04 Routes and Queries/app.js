@@ -11,7 +11,6 @@
 require is more like a new in Java (Oh, Really??!?? )
 */
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
 
 const app = express();
@@ -24,9 +23,6 @@ The function signature is: express.static(root, [options]) . The root argument s
 The options are available here https://expressjs.com/en/4x/api.html#express.static
 */
 app.use(express.static("public"));
-/*
-This is a built-in middleware function in Express. It parses incoming requests with urlencoded payload
- */
 
 /*
 Templates are basically HTML files with special placeholders for embedding data from server. Template engines are used to resolve the data from server
@@ -43,6 +39,9 @@ app.set("view engine", "ejs");
 Setting the path to the HTML templates.
 */
 app.set("views", path.join(__dirname, "views"));
+/*
+This is a built-in middleware function in Express. It parses incoming requests with urlencoded payload
+ */
 
 app.use(express.urlencoded({ extended: false }));
 app.listen(3000);
