@@ -129,7 +129,6 @@ function postRecommend(request, response) {
   // const restaurantsUpdated = JSON.stringify(restaurantsJson);
   // fs.writeFileSync(dataFilePath, restaurantsUpdated);
   restaurantData.writeJsonFile(restaurantsJson);
-  console.log("Wrote the file successfully...");
   response.redirect("/confirm");
 }
 function getRestaurants(request, response) {
