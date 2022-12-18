@@ -8,7 +8,7 @@
 let vwTaigun = {
   kerbWeight: 1260,
   engine: "1.5 Litres",
-  power: "147.95 BHP",
+  power: 147.95,
   torque: "250 NM",
 };
 
@@ -30,7 +30,30 @@ class Car {
     this.power = power;
     this.torque = torque;
   }
+
+  calcPowerPerTon() {
+    console.log(
+      `The power per BHP for a kerb weight of ${this.kerbWeight} is ${
+        (this.power * 1000) / this.kerbWeight
+      }`
+    );
+  }
 }
 
-const grandI10 = new Car(1100, "1.2Litres", "88BHP", "67NM");
+const grandI10 = new Car(1100, "1.2Litres", 88, "67NM");
 console.log(grandI10);
+grandI10.calcPowerPerTon();
+const altoK10 = new Car();
+// console.log(altoK10);
+// altoK10.kerbWeight = 830;
+// altoK10.power = 65;
+// console.log(altoK10);
+
+// ARRAY DESTRUCTURING
+const location = ["Tirunelveli", "Tamil Nadu", "India"];
+const [city, state, country] = location;
+console.log(city, state, country);
+
+//OBJECT DESTRUCTURING
+const { kerbWeight, engine: engineCapacoty, power, torque } = grandI10;
+console.log(kerbWeight, engineCapacoty, power, torque);
