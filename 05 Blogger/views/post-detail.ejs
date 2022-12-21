@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('includes/head', { title: 'Post title' }) %>
+    <link rel="stylesheet" href="/styles/posts.css" />
+  </head>
 
-<head>
-  <%- include('includes/head', { title: 'Post title' }) %>
-  <link rel="stylesheet" href="/styles/posts.css">
-</head>
+  <body>
+    <%- include('includes/header') %>
+    <main id="post-detail">
+      <h1><%= blog.title %></h1>
 
-<body>
-  <%- include('includes/header') %>
-  <main id="post-detail">
-    <h1>...</h1>
-    <section id="post-meta">
-      ...
-    </section>
-    <hr>
-    <section>
-      <p id="body">...</p>
-    </section>
-  </main>
-</body>
-
+      <p class="post-item-author">By <%= blog.name %></p>
+      <section id="post-meta">
+        <time datetime="<%= blog.date %>"><%= blog.date %></time>
+      </section>
+      <hr />
+      <p><%= blog.summary %></p>
+      <section>
+        <p id="body"><%= blog.body %></p>
+      </section>
+      <a class="btn" href="/posts">Back</a>
+    </main>
+  </body>
 </html>
