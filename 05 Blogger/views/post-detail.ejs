@@ -12,7 +12,7 @@
 
       <p class="post-item-author">By <%= blog.name %></p>
       <section id="post-meta">
-        <time datetime="<%= blog.date %>"><%= blog.date %></time>
+        <time datetime="<%= blog.date %>"><%= blog.humanReadableDate %></time>
       </section>
       <hr />
       <p><%= blog.summary %></p>

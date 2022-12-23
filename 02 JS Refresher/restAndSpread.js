@@ -43,3 +43,32 @@ console.log(sumRestMarks(numArray));
 
 //You can use the spread operator to spread the array into multiple values.
 console.log(sumRestMarks(...numArray)); //This will return the right number
+
+let sunseeker55evo = {
+  beam: "4.48 M",
+  draft: "1.33 M",
+};
+
+const sunseekerExtra = {
+  sunseeker55evo,
+  noOfGuests: "6",
+};
+
+console.log(sunseekerExtra);
+/*
+  {
+  sunseeker55evo: { beam: '4.48 M', draft: '1.33 M' },
+  noOfGuests: '6'
+}
+*/
+
+const sunseekerExtraRest = {
+  ...sunseeker55evo,
+  noOfGuests: "6",
+};
+
+console.log(sunseekerExtraRest);
+
+/*
+{ beam: '4.48 M', draft: '1.33 M', noOfGuests: '6' }
+*/
