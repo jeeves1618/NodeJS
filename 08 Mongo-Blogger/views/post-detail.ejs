@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('includes/head', { title: 'Post title' }) %>
+    <link rel="stylesheet" href="/styles/posts.css" />
+  </head>
+
+  <body>
+    <%- include('includes/header') %>
+    <main id="post-detail">
+      <h1><%= blog.title %></h1>
+
+      <p class="post-item-author">
+      <section id="post-meta">
+        <address><%= blog.author.name %></address> | <time datetime="<%= blog.date%>"><%= blog.date%></time></p>
+      </section>
+      <hr />
+      <h3><%= blog.summary %></h3>
+      <section>
+        <p id="body"><%= blog.content %></p>
+      </section>
+      <a class="btn" href="/posts">Back</a>
+    </main>
+  </body>
+</html>

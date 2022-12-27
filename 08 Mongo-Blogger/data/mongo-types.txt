@@ -1,0 +1,1 @@
+db.types.insertMany([{name:"Vietnamese"},{name:"Chinese"},{name:"Mexican"},{name:"Continental"},{name:"Japanese"},{name:"Cafe"},{name:"Indian"},{name:"Malaysian"}])

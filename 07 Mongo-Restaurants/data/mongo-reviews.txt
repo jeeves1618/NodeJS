@@ -1,0 +1,13 @@
+db.reviews.insertOne({reviewer: {firstName: "David", lastName: "Boon"}, rating: 3, text: "Very good vietnamese food. Lemon grass chicken rice is the the best", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e572926133fb71353eac"), name: "Viet Ai"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Geoff", lastName: "Marsh"}, rating: 3, text: "Very good vietnamese food. Lemon grass chicken rice is the the best", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e60c926133fb71353ead"), name: "China Chalet"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Mark", lastName: "Taylor"}, rating: 3, text: "I loved the burrito bowl. The extra guocomole is worth the price", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e623926133fb71353eae"), name: "Chipotle"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Dean", lastName: "Jones"}, rating: 3, text: "Their coffee and sandwiches are our of the world. It is also less crowded in the mornings.", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e64d926133fb71353eaf"), name: "Panera Bread"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Allen", lastName: "Border"}, rating: 3, text: "Best Japanese food in East Hanover, Florham Park and Livingston area. They cook infront of you with all theaterics.", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e66d926133fb71353eb0"), name: "Kyoto Hibachi and Sushi"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Steve", lastName: "Waugh"}, rating: 3, text: "This is one is in the mall inside a barnes and nobles. Best place to sip in coffee with a book in hand.", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e694926133fb71353eb1"), name: "Starbucks"}})
+
+db.reviews.insertOne({reviewer: {firstName: "Mark", lastName: "Waugh"}, rating: 3, text: "A south east asian fusion food. Difficult to pin point what is good", date: new Date("2022-12-24"), restaurant:  {id: ObjectId("63a6e6bd926133fb71353eb2"), name: "Asian Fusion"}})
