@@ -10,9 +10,10 @@
     <main id="post-detail">
       <h1><%= blog.title %></h1>
 
-      <p class="post-item-author">
+      <p class="post-item-author"></p>
       <section id="post-meta">
-        <address><%= blog.author.name %></address> | <time datetime="<%= blog.date%>"><%= blog.date%></time></p>
+        <address><%= blog.author.name %></address>
+        | <time datetime="<%= blog.date%>"><%= humanReadableDate%></time>
       </section>
       <hr />
       <h3><%= blog.summary %></h3>

@@ -23,8 +23,9 @@ async function getPostsList(request, response) {
     .getDatabase()
     .collection("blogs")
     .find({})
-    .project({ title: 1, summary: 1, "author.name": 1 })
+    .project({ title: 1, summary: 1, author: 1 })
     .toArray();
+  console.log(blogPosts);
   response.render("posts-list", { blogs: blogPosts });
 }
 
@@ -35,8 +36,19 @@ async function getPost(request, response) {
     .getDatabase()
     .collection("blogs")
     .findOne({ _id: new objectId(blogId) });
-  console.log(blogData);
-  response.render("post-detail", { blog: blogData });
+
+  const humanReadableDate = blogData.date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  console.log(humanReadableDate);
+  response.render("post-detail", {
+    blog: blogData,
+    humanReadableDate: humanReadableDate,
+  });
 }
 
 async function getPostEntry(request, response) {
@@ -91,25 +103,26 @@ async function postBlogEntry(request, response) {
 }
 
 async function editPost(request, response) {
-  const [authorList] = await db.query("SELECT * FROM authors");
+  //const documentCursor = await db.getDatabase().collection("author").find();
+
+  //The above statement will return an pointer. If you want the documents, you will have to apply toArray menthod to it.
+  const authorList = await db
+    .getDatabase()
+    .collection("author")
+    .find()
+    .toArray();
   const blogId = request.params.id;
 
-  const [blogPosts] = await db.query(
-    "SELECT p.id, title, summary, body, date, name FROM blogger.posts p, blogger.authors a WHERE author_id = a.id AND p.id = ?",
-    [blogId]
-  );
-  const postData = {
-    //If we don't use the ... operator below, blog post will become one of the nested object and the human readable date will be a property of the outer object.
-    //Check RestandSpread.js under JS Refresher for more clarity
-    ...blogPosts[0],
-    date: blogPosts[0].date.toISOString(),
-    humanReadableDate: blogPosts[0].date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }),
-  };
+  const blogData = await db
+    .getDatabase()
+    .collection("blogs")
+    .findOne({ _id: new objectId(blogId) });
+  const humanReadableDate = blogData.date.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   /*
   The above console log will return the follwing
   [
@@ -118,28 +131,41 @@ async function editPost(request, response) {
     { id: 3, name: 'Christopher Hitchens', email: 'hitched@test.com' }
   ]
   */
-  response.render("update-post", { authors: authorList, blog: postData });
+  if (!blogData) {
+    return response.status("404").render("404");
+  }
+  response.render("update-post", {
+    authors: authorList,
+    blog: blogData,
+    humanReadableDate: humanReadableDate,
+  });
 }
 
 async function savePost(request, response) {
-  const blogId = request.params.id;
-
+  console.log("Getting body as " + request.body.content);
+  const blogId = new objectId(request.params.id);
+  console.log("Getting " + blogId);
   //UPDATE blogger.posts SET title = ?, summmary = ?, body = ?, author_id = ? WHERE id =?;
-  const query = `UPDATE blogger.posts SET title = ?, summary = ?, body = ? WHERE id =?`;
-  await db.query(query, [
-    request.body.title,
-    request.body.summary,
-    request.body.content,
-    blogId,
-  ]);
+  await db
+    .getDatabase()
+    .collection("blogs")
+    .updateOne(
+      { _id: blogId },
+      {
+        $set: {
+          title: request.body.title,
+          summary: request.body.summary,
+          body: request.body.content,
+        },
+      }
+    );
 
   response.redirect("/posts");
 }
 
 async function deletePost(request, response) {
-  const blogId = request.params.id;
-  const query = `DELETE FROM blogger.posts WHERE id = ?`;
-  await db.query(query, [blogId]);
+  const blogId = new objectId(request.params.id);
+  await db.getDatabase().collection("blogs").deleteOne({ _id: blogId });
   response.redirect("/posts");
 }
 module.exports = router;
