@@ -31,6 +31,7 @@
 			  
 			  M O N G O   D B
 			  ***************
+			  0. Connection string to MongoDB await mongoClient.connect("mongodb://127.0.0.1:27017");
 			  1. net start MongoDB - to start the service
 			  2. net stop MongoDB - to stop the service
 			  3. show dbs - for listing down the database; once you are inside the database, show collections will list down the collections
@@ -48,5 +49,17 @@
 			  15.Ex: db.restaurants.deleteOne({_id: ObjectId("63a69b2acf880bfacacc78c4")})
 			  16.db.<collectionname>.deleteMany({}) will delete all the documents
 			  17.You can use gt, lt, gte, lte in db.reviews.find({rating: {$gt: 3}})
+			  18.db.author.find() translates to 
+			  
+			  F I L E   U P L O A D 
+			  *********************
+			  1. npm install --save multer
+			  
+			  A J A X
+			  ********
+			  1. Used for browser side Javascript language to make HTTP requests
+			  2. XMLHttpRequest and Fetch() are the two ways in which you can achieve this.
+			  3. XMLHttpRequest can also handle JSON files.
+			  4. fetch() is a modern alternative to XMLHttpRequest. fetch supports promises, but XMLHttpRequest doesn't.	
 			  
 */
