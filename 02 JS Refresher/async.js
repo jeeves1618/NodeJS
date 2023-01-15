@@ -17,3 +17,9 @@ function readFile(fileName) {
 
 readFile("file.txt");
 console.log("The display after asynchronous read");
+
+const a = "Synchronous processing is done!";
+setTimeout(function () {
+  console.log("Asynchronous process is also done!");
+}, 2000);
+console.log(a);
