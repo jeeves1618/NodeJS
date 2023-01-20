@@ -51,3 +51,15 @@ let orderYacht = function ({
 };
 
 orderYacht(sunseeker55evo); //You have ordered an yacht with the engine TWIN VOLVO PENTA D11-725 (2 X 725PS) and the generators 7KW @ 50HZ - 9KW @60HZ. It will be propelled by SHAFTS
+
+console.log(
+  "--------------------------------------------------------------------------------------------------"
+);
+console.log(Object.entries(sunseeker55evo));
+console.log(
+  "--------------------------------------------------------------------------------------------------"
+);
+console.log(Object.values(sunseeker55evo));
+console.log(
+  "--------------------------------------------------------------------------------------------------"
+);
