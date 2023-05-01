@@ -1,42 +1,49 @@
 const get1stcountry = function (code) {
-  fetch(`https://restcountries.com/v3.1/alpha/${code}`).then(function (data) {
-    let neighbour;
-    data
-      .json()
-      .then(function (data) {
-        console.log(data);
-        neighbour = data[0].borders[0];
-        console.log(
-          `${data[0].name.official} is in ${data[0].continents[0]} and its neighbour is `
-        );
-        return fetch(
-          `https://restcountries.com/v3.1/alpha/${data[0].borders[0]}`
-        );
-      })
+  fetch(`https://restcountries.com/v3.1/alpha/${code}`)
+    .then(function (data) {
+      let neighbour;
+      data
+        .json()
+        .then(function (data) {
+          console.log(data);
+          neighbour = data[0].borders[0];
+          console.log(
+            `${data[0].name.official} is in ${data[0].continents[0]} and its neighbour is `
+          );
+          return fetch(
+            `https://restcountries.com/v3.1/alpha/${data[0].borders[0]}`
+          );
+        })
 
-      .then(function (data) {
-        data
-          .json()
-          .then(function (data) {
-            console.log(
-              `${data[0].name.official} and it is in ${data[0].continents[0]} and its neighbour is `
-            );
-            return fetch(
-              `https://restcountries.com/v3.1/alpha/${data[0].borders[0]}`
-            );
-          })
-          .then(function (data) {
-            data.json().then(function (data) {
+        .then(function (data) {
+          data
+            .json()
+            .then(function (data) {
               console.log(
-                `${data[0].name.official} and it is in ${data[0].continents[0]}`
+                `${data[0].name.official} and it is in ${data[0].continents[0]} and its neighbour is `
               );
               return fetch(
                 `https://restcountries.com/v3.1/alpha/${data[0].borders[0]}`
               );
+            })
+            .then(function (data) {
+              data.json().then(function (data) {
+                console.log(
+                  `${data[0].name.official} and it is in ${data[0].continents[0]}`
+                );
+                return fetch(
+                  `https://restcountries.com/v3.1/alpha/${data[0].borders[0]}`
+                );
+              });
             });
-          });
-      });
-  });
+        });
+    })
+    .catch(function (err) {
+      console.log(`Error occureed! and the error is ${err.message} and ${err}`);
+    })
+    .finally(function () {
+      console.log("Promises are killing me!");
+    });
 };
 
 get1stcountry("per");
